@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>star</groupId>
+		<artifactId>star-boot-base</artifactId>
+		<version>0.0.4-SNAPSHOT</version>
+		<relativePath>../star-boot/base</relativePath>
+	</parent>
+	
+	<version>1.0.1-SNAPSHOT</version>
+	<artifactId>vdm2cdf</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<star-env.appname>vdm2cdf</star-env.appname>
+	</properties>
+
+	<scm>
+		<connection>scm:git:https://github.com/starbackend/vdm2cdf.git</connection>
+		<developerConnection>scm:git:https://github.com/starbackend/vdm2cdf.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>pack-project</id>
+						<inherited>false</inherited>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>project</descriptorRef>
+							</descriptorRefs>
+							<formats>
+								<format>tar.gz</format>
+							</formats>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>star</groupId>
+				<artifactId>vdm2cdf-core</artifactId>
+				<version>1.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>star</groupId>
+				<artifactId>vdm2cdf-rpm</artifactId>
+				<version>1.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>star</groupId>
+				<artifactId>vdm2cdf-rpm</artifactId>
+				<type>rpm</type>
+				<version>1.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>star</groupId>
+				<artifactId>vdm2cdf</artifactId>
+				<type>tar.gz</type>
+				<classifier>project</classifier>
+				<version>1.0.1-SNAPSHOT</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<repositories>
+		<repository>
+			<id>cwatch-repo-releases</id>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>https://cwatch.org/repo/releases</url>
+		</repository>
+		<repository>
+			<id>cwatch-repo-snapshots</id>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<url>https://cwatch.org/repo/libs-snapshot-local</url>
+		</repository>
+		<repository>
+			<id>cwatch-priv</id>
+			<name>cwatch-priv-releases</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>https://cwatch.org/repo/priv-release-local</url>
+		</repository>
+		<repository>
+			<id>cwatch-priv-snapshot</id>
+			<name>cwatch-priv-snapshots</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<url>https://cwatch.org/repo/priv-snapshot-local</url>
+		</repository>
+	</repositories>
+	
+	<modules>
+		<module>base</module>
+	</modules>
+
+</project>
