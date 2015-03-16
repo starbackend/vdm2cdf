@@ -8,6 +8,17 @@
 	</listener>
 
 	<servlet>
+		<servlet-name>vdmHttpServlet</servlet-name>
+		<servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vdmHttpServlet</servlet-name>
+		<url-pattern>/stiresServices/*</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
@@ -20,10 +31,10 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+
 
 </web-app>

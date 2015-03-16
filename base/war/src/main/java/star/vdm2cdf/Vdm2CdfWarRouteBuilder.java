@@ -1,9 +1,6 @@
 package star.vdm2cdf;
 
-import java.util.Properties;
-
 import javax.jms.ConnectionFactory;
-import javax.naming.Context;
 import javax.naming.NamingException;
 
 import org.apache.camel.component.jms.JmsComponent;
@@ -16,8 +13,6 @@ import org.springframework.jms.support.destination.DestinationResolver;
 import org.springframework.jms.support.destination.JndiDestinationResolver;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.stereotype.Component;
-
-import com.google.common.base.Strings;
 
 @Component
 @EnableConfigurationProperties(Vdm2CdfProperties.class)
@@ -33,8 +28,9 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 				.logExhaustedMessageHistory(false)
 		);
 		
-		from("direct:vdmHttpInput")
+		from("direct:vdmHttpBatchInput")
 		.id("cdfBatchReceiver")
+		.filter(simple("${body} != null"))
 		.to("direct:ais2cdf");
 		
 		from("direct:vdmHttpMonitoringInput")
