@@ -20,10 +20,10 @@
 
 	<servlet>
 		<servlet-name>spring</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<servlet-class>star.vdm2cdf.Vdm2CdfServlet</servlet-class>
 		<init-param>
 			<param-name>contextClass</param-name>
-			<param-value>star.vdm2cdf.Vdm2CdfApplicationContext</param-value>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>

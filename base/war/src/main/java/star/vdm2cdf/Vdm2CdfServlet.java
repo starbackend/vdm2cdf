@@ -4,11 +4,12 @@ import java.io.IOException;
 
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.io.support.ResourcePropertySource;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import com.google.common.base.Throwables;
 
-public class Vdm2CdfApplicationContext extends AnnotationConfigWebApplicationContext {
+@SuppressWarnings("serial")
+public class Vdm2CdfServlet extends DispatcherServlet {
 	
 	@Override
 	protected ConfigurableEnvironment createEnvironment() {
@@ -18,7 +19,7 @@ public class Vdm2CdfApplicationContext extends AnnotationConfigWebApplicationCon
 				"file:/wl_domains/star/star-apps/conf/vdm2cdf.properties"
 		);	
 		try {
-			env.getPropertySources().addLast(new ResourcePropertySource(config));
+			env.getPropertySources().addFirst(new ResourcePropertySource("file:"+config));
 		} catch (IOException e) {
 			throw Throwables.propagate(e);
 		}

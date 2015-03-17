@@ -30,6 +30,7 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 		
 		from("direct:vdmHttpBatchInput")
 		.id("cdfBatchReceiver")
+		.threads()
 		.filter(simple("${body} != null"))
 		.to("direct:ais2cdf");
 		
@@ -38,6 +39,7 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 		
 		from("direct:ais2cdfPositionOut")
 		.id("cdfPositionOut")
+		.log("boo")
 		.to("direct:cdfPositionForward");
 		
 		from("direct:ais2cdfVoyageOut")
