@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.support.destination.DestinationResolver;
 import org.springframework.jms.support.destination.JndiDestinationResolver;
 import org.springframework.jndi.JndiTemplate;
@@ -39,7 +40,6 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 		
 		from("direct:ais2cdfPositionOut")
 		.id("cdfPositionOut")
-		.log("boo")
 		.to("direct:cdfPositionForward");
 		
 		from("direct:ais2cdfVoyageOut")
@@ -75,7 +75,7 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 	@Bean
 	JmsComponent deadLetter(@Qualifier("vdm2cdfDeadLetterConnectionFactory") ConnectionFactory vdm2cdfDeadLetterConnectionFactory, @Qualifier("vdm2cdfDeadLetterDestinationResolver") DestinationResolver vdm2cdfDeadLetterDestinationResolver) {
 		JmsComponent jms = new JmsComponent();
-		jms.setConnectionFactory(vdm2cdfDeadLetterConnectionFactory);
+		jms.setConnectionFactory(new CachingConnectionFactory(vdm2cdfDeadLetterConnectionFactory));
 		jms.setDestinationResolver(vdm2cdfDeadLetterDestinationResolver);
 		return jms;
 	}
