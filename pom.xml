@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -10,7 +9,7 @@
 		<relativePath>../star-boot/base</relativePath>
 	</parent>
 
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<artifactId>vdm2cdf</artifactId>
 	<packaging>pom</packaging>
 
@@ -23,7 +22,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/starbackend/vdm2cdf.git</connection>
 		<developerConnection>scm:git:https://github.com/starbackend/vdm2cdf.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>vdm2cdf-1.0.1</tag>
 	</scm>
 
 	<build>
@@ -57,14 +56,14 @@
 			<dependency>
 				<groupId>star</groupId>
 				<artifactId>vdm2cdf-core</artifactId>
-				<version>1.0.1-SNAPSHOT</version>
+				<version>1.0.1</version>
 			</dependency>
 			<dependency>
 				<groupId>star</groupId>
 				<artifactId>vdm2cdf</artifactId>
 				<type>tar.gz</type>
 				<classifier>project</classifier>
-				<version>1.0.1-SNAPSHOT</version>
+				<version>1.0.1</version>
 			</dependency>
 
 			<dependency>
