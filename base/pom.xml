@@ -21,6 +21,7 @@
 	</dependencies>
 
 	<modules>
+		<module>core</module>
 		<module>war</module>
 	</modules>
 

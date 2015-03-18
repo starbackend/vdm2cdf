@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>star</groupId>
 		<artifactId>star-boot-base</artifactId>
-		<version>0.0.4-SNAPSHOT</version>
+		<version>0.0.4</version>
 		<relativePath>../star-boot/base</relativePath>
 	</parent>
 	
@@ -54,17 +54,6 @@
 			<dependency>
 				<groupId>star</groupId>
 				<artifactId>vdm2cdf-core</artifactId>
-				<version>1.0.1-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>star</groupId>
-				<artifactId>vdm2cdf-rpm</artifactId>
-				<version>1.0.1-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>star</groupId>
-				<artifactId>vdm2cdf-rpm</artifactId>
-				<type>rpm</type>
 				<version>1.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
