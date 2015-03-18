@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>star</groupId>
 		<artifactId>vdm2cdf-base</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>vdm2cdf-core</artifactId>
 	<packaging>jar</packaging>
