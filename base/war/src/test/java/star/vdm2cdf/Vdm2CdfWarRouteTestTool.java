@@ -1,10 +1,15 @@
 package star.vdm2cdf;
 
+import java.util.EventObject;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.impl.DefaultCamelBeanPostProcessor;
+import org.apache.camel.management.event.ExchangeCompletedEvent;
+import org.apache.camel.support.EventNotifierSupport;
+import org.apache.camel.util.ServiceHelper;
 import org.cwatch.vdm.AisGsonProxy;
 import org.cwatch.vdm.test.AisGsonProxyAdapter;
 import org.cwatch.vdm.test.ProxySsnVdmCallback;
@@ -18,12 +23,13 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.StopWatch;
 
 import ssn.spm.domain.ais.AisMessageContainer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-public class Vdm2CdfWarRouteTest {
+public class Vdm2CdfWarRouteTestTool {
 
 	@Autowired
 	CamelContext camelContext;
@@ -62,10 +68,37 @@ public class Vdm2CdfWarRouteTest {
 		sim.runFor(10000);
 	}
 	
+	int count2 = 0;
+	
 	@Test
-	public void test2() {
-		//template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/ais01.json.gz"), "SSNProxy", "BOO");
+	public void test2() throws Exception {
+		EventNotifierSupport eventNotifier = new EventNotifierSupport() {
+			
+			@Override
+			public void notify(EventObject event) throws Exception {
+				if (event instanceof ExchangeCompletedEvent) {
+					if (((ExchangeCompletedEvent) event).getExchange().getProperty("CamelSplitComplete")!=null) {
+						count2++;
+					};
+				}
+			}
+			
+			@Override
+			public boolean isEnabled(EventObject event) {
+				return true;
+			}
+		};
+		ServiceHelper.startService(eventNotifier);
+		camelContext.getManagementStrategy().addEventNotifier(eventNotifier);
+		
+		StopWatch sw = new org.springframework.util.StopWatch();
+		sw.start();
 		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+		sw.stop();
+		System.out.println(sw.shortSummary() + " msgs = " + count2 + " mgs/sec = " + (count2/sw.getTotalTimeSeconds()));
 	}
 	
 	@Configuration

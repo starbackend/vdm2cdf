@@ -62,7 +62,7 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 	
 	@Bean
 	ConnectionFactory vdm2cdfDeadLetterConnectionFactory(@Qualifier("vdm2cdfDeadLetterJndiTemplate") JndiTemplate vdm2cdfDeadLetterJndiTemplate) throws NamingException {
-		return vdm2cdfDeadLetterJndiTemplate.lookup(configuration.getDeadLetterConnectionFactoryName(), ConnectionFactory.class);
+		return configuration.getDeadLetterConnectionFactory().lookup(vdm2cdfDeadLetterJndiTemplate);
 	}
 
 	@Bean
@@ -75,7 +75,7 @@ public class Vdm2CdfWarRouteBuilder extends SpringRouteBuilder {
 	@Bean
 	JmsComponent deadLetter(@Qualifier("vdm2cdfDeadLetterConnectionFactory") ConnectionFactory vdm2cdfDeadLetterConnectionFactory, @Qualifier("vdm2cdfDeadLetterDestinationResolver") DestinationResolver vdm2cdfDeadLetterDestinationResolver) {
 		JmsComponent jms = new JmsComponent();
-		jms.setConnectionFactory(new CachingConnectionFactory(vdm2cdfDeadLetterConnectionFactory));
+		jms.setConnectionFactory(vdm2cdfDeadLetterConnectionFactory);
 		jms.setDestinationResolver(vdm2cdfDeadLetterDestinationResolver);
 		return jms;
 	}

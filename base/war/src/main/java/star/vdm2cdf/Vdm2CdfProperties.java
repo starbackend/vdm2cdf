@@ -1,5 +1,6 @@
 package star.vdm2cdf;
 
+import org.cwatch.env.ConnectionFactoryProperties;
 import org.cwatch.env.InitialContextProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -12,7 +13,7 @@ public class Vdm2CdfProperties {
 	
 	private InitialContextProperties deadLetterInitialContext = new InitialContextProperties();
 	
-	private String deadLetterConnectionFactoryName = "weblogic.jms.ConnectionFactory";
+	private ConnectionFactoryProperties deadLetterConnectionFactory = new ConnectionFactoryProperties("weblogic.jms.ConnectionFactory", false);
 	
 	private String deadLetterErrorDestinationType = "queue";
 	
@@ -57,16 +58,6 @@ public class Vdm2CdfProperties {
 			String deadLetterInvalidDestinationName) {
 		this.deadLetterInvalidDestinationName = deadLetterInvalidDestinationName;
 	}
-
-	public String getDeadLetterConnectionFactoryName() {
-		return deadLetterConnectionFactoryName;
-	}
-
-	public void setDeadLetterConnectionFactoryName(
-			String deadLetterConnectionFactoryName) {
-		this.deadLetterConnectionFactoryName = deadLetterConnectionFactoryName;
-	}
-
 	
 	public InitialContextProperties getDeadLetterInitialContext() {
 		return deadLetterInitialContext;
@@ -75,5 +66,14 @@ public class Vdm2CdfProperties {
 	public void setDeadLetterInitialContext(
 			InitialContextProperties deadLetterInitialContext) {
 		this.deadLetterInitialContext = deadLetterInitialContext;
+	}
+
+	public ConnectionFactoryProperties getDeadLetterConnectionFactory() {
+		return deadLetterConnectionFactory;
+	}
+
+	public void setDeadLetterConnectionFactory(
+			ConnectionFactoryProperties deadLetterConnectionFactory) {
+		this.deadLetterConnectionFactory = deadLetterConnectionFactory;
 	}
 }

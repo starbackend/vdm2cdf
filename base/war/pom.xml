@@ -12,7 +12,7 @@
 	<packaging>war</packaging>
 
 	<build>
-		<finalName>stires-vdm-core</finalName>
+		<finalName>vdm2cdf</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -107,10 +107,6 @@
 					<artifactId>activemq-camel</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>star</groupId>
-			<artifactId>star-env-defaults</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
