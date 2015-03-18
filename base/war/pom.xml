@@ -31,22 +31,6 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.oracle.weblogic</groupId>
-				<artifactId>weblogic-maven-plugin</artifactId>
-				<configuration>
-					<adminurl>t3://twls69.emsa.local:7201</adminurl>
-					<user>weblogic</user>
-					<password>weblogic1</password>
-					<upload>true</upload>
-					<action>deploy</action>
-					<remote>false</remote>
-					<verbose>true</verbose>
-					<targets>starCluster1</targets>
-					<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
-					<name>${project.build.finalName}</name>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -150,6 +134,31 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>weblogic</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<configuration>
+							<adminurl>t3://twls69.emsa.local:7201</adminurl>
+							<user>weblogic</user>
+							<password>weblogic1</password>
+							<upload>true</upload>
+							<action>deploy</action>
+							<remote>false</remote>
+							<verbose>true</verbose>
+							<targets>starCluster1</targets>
+							<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+							<name>${project.build.finalName}</name>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 
 </project>
