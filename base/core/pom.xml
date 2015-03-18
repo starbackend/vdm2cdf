@@ -105,7 +105,6 @@
 		<dependency>
 			<groupId>org.cwatch</groupId>
 			<artifactId>cwatch-ssnsi-sim-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
