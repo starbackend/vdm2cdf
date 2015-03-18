@@ -14,7 +14,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<cwatch-ssnsi-sim.version>0.0.1</cwatch-ssnsi-sim.version>
+		<cwatch-ssnsi-sim.version>0.0.2</cwatch-ssnsi-sim.version>
 		
 		<star-env.appname>vdm2cdf</star-env.appname>
 	</properties>
@@ -70,6 +70,13 @@
 				<groupId>org.cwatch</groupId>
 				<artifactId>cwatch-ssnsi-sim-core</artifactId>
 				<version>${cwatch-ssnsi-sim.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.cwatch</groupId>
+				<artifactId>cwatch-ssnsi-sim</artifactId>
+				<version>${cwatch-ssnsi-sim.version}</version>
+				<type>tar.gz</type>
+				<classifier>project</classifier>
 			</dependency>
 
 		</dependencies>
