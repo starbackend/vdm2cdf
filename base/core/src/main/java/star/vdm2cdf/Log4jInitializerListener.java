@@ -24,14 +24,14 @@ public class Log4jInitializerListener implements ServletContextListener {
 		String loc = env.getProperty(Vdm2CdfProperties.LOGGING_CONFIG_LOCATION_PROPERTY,
 				env.getProperty(
 						Vdm2CdfProperties.CONFIG_LOCATION_PROPERTY,
-						"/wl_domains/star/star-apps/conf/vdm2cdf.properties"
+						"classpath:vdm2cdf.log4j.properties"
 				)
 		);
 		
-		System.out.println("VDM2CDF Logging location: " + loc);
+		System.out.println("VDM2CDF Logging configuration location: " + loc);
 		
 		try {
-			Log4jConfigurer.initLogging("file:"+loc);
+			Log4jConfigurer.initLogging(loc);
 		} catch (FileNotFoundException e) {
 			throw Throwables.propagate(e);
 		}
