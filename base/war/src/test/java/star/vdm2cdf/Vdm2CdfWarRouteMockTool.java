@@ -13,7 +13,6 @@ import org.apache.camel.impl.DefaultCamelBeanPostProcessor;
 import org.apache.camel.management.event.ExchangeCompletedEvent;
 import org.apache.camel.support.EventNotifierSupport;
 import org.apache.camel.util.ServiceHelper;
-import org.cwatch.boot.camel.CwatchCamelTools;
 import org.cwatch.service.routes.AisToCdfErrorRouteBuilder;
 import org.cwatch.service.routes.AisToCdfRouteBuilder;
 import org.cwatch.split.routes.CwatchSplitInputRouteBuilder;
