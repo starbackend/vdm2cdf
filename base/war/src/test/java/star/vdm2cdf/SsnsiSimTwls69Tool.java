@@ -6,9 +6,11 @@ public class SsnsiSimTwls69Tool {
 	
 	public static void main(String[] args) throws InterruptedException {
 		SsnsiSimulator sim = new SsnsiSimulator("http://twls69.emsa.local:7011");
-		sim.setNumberOfVessels(10);
-		sim.setPositionMessagesPerSecond(100);
-		sim.runFor(1000000);
+		sim.setMessagesPath("/vdm2cdf/stiresServices/stiresVdmBatchService/");
+		sim.setMonitoringPath("/vdm2cdf/stiresServices/stiresMonitoringService/");
+		sim.setNumberOfVessels(100);
+		sim.setPositionMessagesPerSecond(200);
+		sim.runFor(300000);
 	}
 
 }

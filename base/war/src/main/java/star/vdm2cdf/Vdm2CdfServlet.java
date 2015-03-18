@@ -16,7 +16,7 @@ public class Vdm2CdfServlet extends DispatcherServlet {
 		ConfigurableEnvironment env = super.createEnvironment();
 		String config = env.getProperty(
 				Vdm2CdfProperties.CONFIG_LOCATION_PROPERTY,
-				"file:/wl_domains/star/star-apps/conf/vdm2cdf.properties"
+				"/wl_domains/star/star-apps/conf/vdm2cdf.properties"
 		);	
 		try {
 			env.getPropertySources().addFirst(new ResourcePropertySource("file:"+config));

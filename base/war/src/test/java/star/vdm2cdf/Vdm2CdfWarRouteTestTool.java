@@ -94,9 +94,9 @@ public class Vdm2CdfWarRouteTestTool {
 		StopWatch sw = new org.springframework.util.StopWatch();
 		sw.start();
 		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
-		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
-		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
-		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+//		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+//		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
+//		template.sendBodyAndHeader(template.getDefaultEndpoint(), ExchangePattern.InOnly, getClass().getResource("/vdmHttp-valid.json"), "SSNProxy", "BOO");
 		sw.stop();
 		System.out.println(sw.shortSummary() + " msgs = " + count2 + " mgs/sec = " + (count2/sw.getTotalTimeSeconds()));
 	}
