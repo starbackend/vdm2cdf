@@ -9,7 +9,7 @@
 		<relativePath>../star-boot/base</relativePath>
 	</parent>
 
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<artifactId>vdm2cdf</artifactId>
 	<packaging>pom</packaging>
 
@@ -22,7 +22,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/starbackend/vdm2cdf.git</connection>
 		<developerConnection>scm:git:https://github.com/starbackend/vdm2cdf.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>vdm2cdf-1.0.2</tag>
 	</scm>
 
 	<build>
@@ -56,14 +56,14 @@
 			<dependency>
 				<groupId>star</groupId>
 				<artifactId>vdm2cdf-core</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>star</groupId>
 				<artifactId>vdm2cdf</artifactId>
 				<type>tar.gz</type>
 				<classifier>project</classifier>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
