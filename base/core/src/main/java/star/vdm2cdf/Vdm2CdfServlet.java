@@ -26,7 +26,7 @@ public class Vdm2CdfServlet extends DispatcherServlet {
 		try {
 			env.getPropertySources().addFirst(new ResourcePropertySource(config));
 		} catch (FileNotFoundException e) {
-			LOG.info("Configuration file not found, using defaults. ", e.getMessage());
+			LOG.info("Configuration file not found, using defaults. " + e.getMessage());
 		} catch (IOException e) {
 			throw Throwables.propagate(e);
 		}
