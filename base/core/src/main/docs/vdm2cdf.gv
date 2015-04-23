@@ -1,0 +1,49 @@
+strict digraph {
+  rankdir="LR"
+  
+  subgraph clusterOsb {
+  	label="OSB"
+  	style="rounded"
+	ssnsi[label="Live Data Feed" shape=rect ];
+  }
+
+	  subgraph clusterVdmCore {
+	    style="rounded"
+	    
+	    label="Stires VDM Core";
+	    stiresVdmBatchServlet[label="ssnBatchServlet" shape=rect]
+	    stiresVdmMonitoringServlet[label="ssnMonitoringServlet" shape=rect]
+	  }
+
+  subgraph clusterWeblogic {
+      label="Weblogic"
+      style="rounded"
+    
+
+      cdfInvalid[label="star.deadLetter.invalid"]
+	  cdfError[label="star.deadLetter.error"]
+	  
+	  subgraph clusterStarback {
+	    label="vdm2cdf";
+	 
+	    
+	    batchServlet[label="batchServlet", shape=rect]
+	    monitoringServlet[label="monitoringServlet", shape=rect]
+	    
+	    cdfBatchReceiver[label="cdfBatchReceiver", shape=rect]
+	
+	    
+	    color=blue
+	    fontcolor=blue
+	    style="rounded"
+	  }
+	  downsamplingPosition[label="jms.star.DownSampling.PositionQueue"];
+	  downsamplingVoyage[label="jms.star.DownSampling.VoyageQueue"];
+	  ssnsi -> {stiresVdmBatchServlet, stiresVdmMonitoringServlet, batchServlet, monitoringServlet}[label="HTTP"];
+	
+
+	  batchServlet -> cdfBatchReceiver -> {downsamplingPosition, downsamplingVoyage, cdfInvalid, cdfError};
+	  {downsamplingPosition, downsamplingVoyage} -> starDonwsampling;
+	  starDonwsampling[shape=rect]
+  }
+}
